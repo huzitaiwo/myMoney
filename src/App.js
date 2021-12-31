@@ -1,5 +1,9 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 
+// pages and components 
+
+
+// styles
 import './App.css'
 
 function App() {
@@ -8,13 +12,13 @@ function App() {
       app component
       <BrowserRouter>
         <Switch>
-          <Route exact to="/">
+          <Route exact path="/">
             <Home />
           </Route>
-          <Route to="/signup">
+          <Route path="/signup">
             <Signup />
           </Route>
-          <Route to="/login">
+          <Route path="/login">
             <Login />
           </Route>
         </Switch>
