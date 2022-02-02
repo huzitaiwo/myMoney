@@ -1,6 +1,10 @@
 import styles from './Signup.module.css';
 
 export default function Signup() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [displayName, setDisplayName] = useState('')
+
   return (
     <form onSubmit={handleSubmit} className={styles['signup-form']}>
       <h2>Signup</h2>
