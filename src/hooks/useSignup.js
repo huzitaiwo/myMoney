@@ -7,11 +7,16 @@ export const useSignup = () => {
 
   const singup = (email, password, displayName) => {
     setError(null)
-    setIsLoading(tru)
+    setIsLoading(true)
 
     try {
       // singup user
       const res = await projectAuth.createUserWithEmailAndPassword(email, password)
+      console.log(res.user)
+
+      if(!res) {
+        throw new Error('Could not complete signup')
+      }
     }
     catch(err) {
       console.log(err.message)
