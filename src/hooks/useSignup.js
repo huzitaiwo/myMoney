@@ -8,4 +8,6 @@ export const useSignup = () => {
   const singup = (email, password, displayName) => {
     
   }
+
+  return { isLoading, error, singup }
 }
