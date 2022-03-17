@@ -17,6 +17,9 @@ export const useSignup = () => {
       if(!res) {
         throw new Error('Could not complete signup')
       }
+
+      await res.user.updateProfile({ displayName })
+      console.log(res.user)
     }
     catch(err) {
       console.log(err.message)
