@@ -20,7 +20,7 @@ export const useSignup = () => {
 
       await res.user.updateProfile({ displayName })
       
-      setError(false)
+      setError(null)
       setIsLoading(false)
     }
     catch(err) {
