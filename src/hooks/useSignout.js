@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { projectAuth } from "../firebase/config"
 import { useAuthContext } from './useAuthContext'
 
 export const useSignup = () => {
-  const [unMounted, setUnMounted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const { dispatch } = useAuthContext()
@@ -26,23 +25,15 @@ export const useSignup = () => {
       // dispatch login action
       dispatch({ type: 'LOGIN', payload: res.user })
       
-      if (!unMounted) {
-        setError(null)
-        setIsLoading(false)
-      }
+      setError(null)
+      setIsLoading(false)
     }
     catch(err) {
-      if (!unMounted) {
-        setError(err.message)
-        setIsLoading(false)
-      }
+      setError(err.message)
+      setIsLoading(false)
     }
     
   }
-
-  useEffect(() => {
-    return () => setUnMounted(true)
-  },[])
 
   return { isLoading, error, singup }
 }
