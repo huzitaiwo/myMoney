@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { projectAuth } from "../firebase/config"
 
 export const useLogin = () => {
+  const [unMounted, setUnMounted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -11,21 +12,26 @@ export const useLogin = () => {
 
     try {
       const res = await projectAuth.signInWithEmailAndPassword(email, password)
-      console.log(res.user)
-
       if(!res) {
         throw new Error('Could not complete login')
-      } else {
-        setError(false)
+      }
+
+      if (!unMounted) {
+        setError(null)
         setIsLoading(false)
       }
     }
     catch (err) {
-      setError(err.message)
-      setIsLoading(false)
+      if (!unMounted) {
+        setError(err.message)
+        setIsLoading(false)
+      }
     }
   }
 
+  useEffect(() => {
+    return () => setUnMounted(true)
+  },[])
 
   return { isLoading, error, login }
 }
