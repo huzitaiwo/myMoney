@@ -12,9 +12,13 @@ export const useLogin = () => {
 
     try {
       const res = await projectAuth.signInWithEmailAndPassword(email, password)
+      
       if(!res) {
         throw new Error('Could not complete login')
       }
+
+      // dispatch login action
+      dispatch({ type: 'LOGIN', payload: res.user })
 
       if (!unMounted) {
         setError(null)
