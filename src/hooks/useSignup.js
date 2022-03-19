@@ -5,7 +5,7 @@ export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const singup = (email, password, displayName) => {
+  const singup = async (email, password, displayName) => {
     setError(null)
     setIsLoading(true)
 

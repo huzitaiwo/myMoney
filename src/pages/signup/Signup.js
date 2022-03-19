@@ -12,7 +12,7 @@ export default function Signup() {
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(email, password, displayName)
+    singup(email, password, displayName)
   }
 
   return (
@@ -42,7 +42,9 @@ export default function Signup() {
           value={displayName}
         />
       </label>
-      <button className='btn'>Signup</button>
+      {!isLoading &&<button className='btn'>Signup</button>}
+      {isLoading && <button className='btn'>signing up...</button>}
+      {error && <p>{error}</p>}
     </form>
   )
 }
