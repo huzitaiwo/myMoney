@@ -15,7 +15,6 @@ export default function Signup() {
   const handleSubmit = e => {
     e.preventDefault()
     singup(email, password, displayName)
-    history.push('/')
   }
 
   return (
