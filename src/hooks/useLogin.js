@@ -4,4 +4,12 @@ import { projectAuth } from "../firebase/config"
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
+
+  const login = async () => {
+    setError(null)
+    setIsLoading(true)
+  }
+
+
+  return { isLoading, error, login }
 }
