@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
 import { projectAuth } from "../firebase/config"
+import { useAuthContext } from "./useAuthContext"
 
 export const useLogin = () => {
   const [unMounted, setUnMounted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
+  const { dispatch } = useAuthContext()
 
   const login = async (email, password) => {
     setError(null)
