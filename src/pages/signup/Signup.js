@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import { useSignup } from '../../hooks/useSignup'
 
 // styles
@@ -9,10 +10,12 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
   const { error, isLoading, singup} = useSignup()
+  const history = useHistory()
 
   const handleSubmit = e => {
     e.preventDefault()
     singup(email, password, displayName)
+    
   }
 
   return (
