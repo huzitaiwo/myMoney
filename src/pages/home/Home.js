@@ -1,5 +1,8 @@
 import styles from './Home.module.css'
 
+// components
+import TransctionForm from './TransctionForm'
+
 
 export default function Home() {
   return (
@@ -8,7 +11,7 @@ export default function Home() {
         transaction list
       </div>
       <div className={styles.sidebar}>
-        
+        <TransctionForm />
       </div>
     </div>
   )
