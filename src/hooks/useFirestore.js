@@ -10,6 +10,8 @@ let initialState = {
 
 const firestoreReducer = (state, action) => {
   switch (action.type) {
+    case 'IS_LOADING':
+      return { isLoading: true, document: null, error: null, success: null }
     default:
       return state
   }
@@ -24,6 +26,7 @@ export const useFirestore = collection => {
 
   // add document
   const addDocument = doc => {
+    dispatch({ type: 'IS_LOADING' })
       
   }
 
