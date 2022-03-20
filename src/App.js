@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      {authIsReady && 
+      {authIsReady && (
         <BrowserRouter>
           <Navbar />
           <Switch>
@@ -32,7 +32,7 @@ function App() {
             </Route>
           </Switch>
         </BrowserRouter>
-      }
+      )}
     </div>
   );
 }

@@ -25,8 +25,8 @@ export function AuthContextProvider({ children }) {
   useEffect(() => {
     const unsubscribe = projectAuth.onAuthStateChanged(user => {
       dispatch({ type: 'AUTH_IS_READY', payload: user })
+      unsubscribe()
     })
-    unsubscribe()
   }, [])
 
   console.log('AuthContext state:', state)
