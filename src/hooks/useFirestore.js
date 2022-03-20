@@ -31,4 +31,11 @@ export const useFirestore = collection => {
   const deleteDocument = id => {
 
   }
+
+  useEffect(() => {
+    return () => setUnMounted(true)
+  }, [])
+
+  return { addDocument, deleteDocument, reponse }
+
 }
