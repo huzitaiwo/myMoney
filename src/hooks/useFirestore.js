@@ -17,4 +17,18 @@ const firestoreReducer = (state, action) => {
 
 export const useFirestore = collection => {
   const [reponse, dispatch] = useReducer(firestoreReducer, initialState)
+  const [unMounted, setUnMounted] = useState(false)
+
+  // collection ref
+  const ref = projectFirestore.collection(collection)
+
+  // add document
+  const addDocument = doc => {
+      
+  }
+
+  // delete document
+  const deleteDocument = id => {
+
+  }
 }
