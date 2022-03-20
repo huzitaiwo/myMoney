@@ -12,6 +12,8 @@ const firestoreReducer = (state, action) => {
   switch (action.type) {
     case 'IS_LOADING':
       return { isLoading: true, document: null, error: null, success: null }
+    case 'ADD_DOCUMENT':
+      return { isLoading: false, document: action.payload, error: null, success: true }
     default:
       return state
   }
@@ -37,6 +39,7 @@ export const useFirestore = collection => {
 
     try {
       const addedDocument = await ref.add(doc)
+      dispatchIfNotUnMounted({ type: 'ADD_DOCUMENT', payload: addedDocument })
       
     }
     catch (err) {
