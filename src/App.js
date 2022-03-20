@@ -10,27 +10,29 @@ import Signup from './pages/signup/Signup'
 import Navbar from './components/Navbar'
 
 function App() {
-  const { user } = useAuthContext()
+  const { user, authIsReady } = useAuthContext()
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route exact path="/">
-            {!user && <Redirect to='/login' />}
-            {user && <Home />}
-          </Route>
-          <Route path="/login">
-            {user && <Redirect to='/' />}
-            {!user && <Login />}
-          </Route>
-          <Route path="/signup">
-            {user && <Redirect to='/' />}
-            {!user && <Signup />}
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      {authIsReady && 
+        <BrowserRouter>
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              {!user && <Redirect to='/login' />}
+              {user && <Home />}
+            </Route>
+            <Route path="/login">
+              {user && <Redirect to='/' />}
+              {!user && <Login />}
+            </Route>
+            <Route path="/signup">
+              {user && <Redirect to='/' />}
+              {!user && <Signup />}
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      }
     </div>
   );
 }
