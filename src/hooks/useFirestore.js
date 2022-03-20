@@ -24,6 +24,13 @@ export const useFirestore = collection => {
   // collection ref
   const ref = projectFirestore.collection(collection)
 
+  // only dispatch if not unMounted
+  const dispatchIfNotUnMounted = action => {
+    if (!unMounted) {
+      dispatch(action)
+    }
+  }
+
   // add document
   const addDocument = async (doc) => {
     dispatch({ type: 'IS_LOADING' })
