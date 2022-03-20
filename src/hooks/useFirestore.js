@@ -25,13 +25,21 @@ export const useFirestore = collection => {
   const ref = projectFirestore.collection(collection)
 
   // add document
-  const addDocument = doc => {
+  const addDocument = async (doc) => {
     dispatch({ type: 'IS_LOADING' })
+
+    try {
+      const addedDocument = await ref.add(doc)
+      
+    }
+    catch (err) {
+      
+    }
       
   }
 
   // delete document
-  const deleteDocument = id => {
+  const deleteDocument = async (id) => {
 
   }
 
