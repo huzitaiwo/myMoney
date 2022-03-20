@@ -6,6 +6,19 @@ export default function TransctionForm() {
   const [amount, setAmount] = useState('')
 
   return (
-    <div>TransctionForm</div>
+    <>
+      <h3>Add a Transaction</h3>
+      <form>
+        <label>
+          <span>Transation name:</span>
+          <input 
+            type="text"
+            required
+            onChange={e => setName(e.target.value)}
+            value={name}
+          />
+        </label>
+      </form>
+    </>
   )
 }
