@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useState } from 'react'
-import { projectFirestore } from '../firebase/config'
+import { projectFirestore, timestamp } from '../firebase/config'
 
 let initialState = {
   document: null,
@@ -40,6 +40,7 @@ export const useFirestore = collection => {
     dispatch({ type: 'IS_LOADING' })
 
     try {
+      const createdAt = timestamp.fromDate(new Date)
       const addedDocument = await ref.add(doc)
       dispatchIfNotUnMounted({ type: 'ADD_DOCUMENT', payload: addedDocument })
       
