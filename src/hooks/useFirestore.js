@@ -24,8 +24,6 @@ const firestoreReducer = (state, action) => {
 export const useFirestore = collection => {
   const [reponse, dispatch] = useReducer(firestoreReducer, initialState)
   const [unMounted, setUnMounted] = useState(false)
-  const { user } = AuthContext()
-  console.log(user)
 
   // collection ref
   const ref = projectFirestore.collection(collection)
@@ -43,7 +41,7 @@ export const useFirestore = collection => {
 
     try {
       const createdAt = timestamp.fromDate(new Date)
-      const addedDocument = await ref.add({ ...doc, createdAt, uid })
+      const addedDocument = await ref.add({ ...doc, createdAt })
       dispatchIfNotUnMounted({ type: 'ADD_DOCUMENT', payload: addedDocument })
       
     }

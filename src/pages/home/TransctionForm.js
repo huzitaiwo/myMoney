@@ -1,15 +1,18 @@
 import { useState } from "react"
 import { useFirestore } from '../../hooks/useFirestore'
+import { useAuthContext } from "../../hooks/useAuthContext"
 
 
 export default function TransctionForm() {
   const [name, setName] = useState('')
   const [amount, setAmount] = useState('')
+  const { user } = useAuthContext()
   const { addDocument } = useFirestore('transactions')
 
   const handleSubmit = e => {
     e.preventDefault()
-    addDocument({ name, amount})
+    const uid = user.id
+    addDocument({ name, amount, uid })
   }
 
   return (
