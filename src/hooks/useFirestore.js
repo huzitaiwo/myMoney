@@ -44,7 +44,8 @@ export const useFirestore = collection => {
 
     try {
       const createdAt = timestamp.fromDate(new Date)
-      const addedDocument = await ref.add({ ...doc, createdAt })
+      const uid = user.uid
+      const addedDocument = await ref.add({ ...doc, createdAt, uid })
       dispatchIfNotUnMounted({ type: 'ADD_DOCUMENT', payload: addedDocument })
       
     }
