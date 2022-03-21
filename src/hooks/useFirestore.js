@@ -1,6 +1,5 @@
 import { useReducer, useEffect, useState } from 'react'
 import { projectFirestore, timestamp } from '../firebase/config'
-import { AuthContext } from '../context/AuthContext'
 
 let initialState = {
   document: null,
@@ -44,7 +43,6 @@ export const useFirestore = collection => {
 
     try {
       const createdAt = timestamp.fromDate(new Date)
-      const uid = user.uid
       const addedDocument = await ref.add({ ...doc, createdAt, uid })
       dispatchIfNotUnMounted({ type: 'ADD_DOCUMENT', payload: addedDocument })
       
