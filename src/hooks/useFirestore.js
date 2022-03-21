@@ -1,5 +1,6 @@
 import { useReducer, useEffect, useState } from 'react'
 import { projectFirestore, timestamp } from '../firebase/config'
+import { AuthContext } from '../context/AuthContext'
 
 let initialState = {
   document: null,
@@ -24,6 +25,8 @@ const firestoreReducer = (state, action) => {
 export const useFirestore = collection => {
   const [reponse, dispatch] = useReducer(firestoreReducer, initialState)
   const [unMounted, setUnMounted] = useState(false)
+  const { user } = AuthContext()
+  console.log(user)
 
   // collection ref
   const ref = projectFirestore.collection(collection)
