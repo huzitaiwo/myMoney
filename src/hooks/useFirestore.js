@@ -14,6 +14,8 @@ const firestoreReducer = (state, action) => {
       return { isLoading: true, document: null, error: null, success: null }
     case 'ADD_DOCUMENT':
       return { isLoading: false, document: action.payload, error: null, success: true }
+    case 'ERROR':
+      return { isLoading: false, document: null, error: action.payload, success: false }
     default:
       return state
   }
@@ -43,7 +45,7 @@ export const useFirestore = collection => {
       
     }
     catch (err) {
-      
+      dispatchIfNotUnMounted({ type: 'ERROR', payload: err.message })
     }
       
   }
