@@ -5,12 +5,19 @@ import { useFirestore } from '../../hooks/useFirestore'
 export default function TransctionForm({ uid }) {
   const [name, setName] = useState('')
   const [amount, setAmount] = useState('')
-  const { addDocument } = useFirestore('transactions')
+  const { addDocument, response } = useFirestore('transactions')
 
   const handleSubmit = e => {
     e.preventDefault()
     addDocument({ name, amount, uid })
   }
+
+  useEffect(() => {
+    if (response.success) {
+      setName('')
+      setAmount('')
+    }
+  }, [response.success])
 
   return (
     <>
