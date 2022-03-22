@@ -3,6 +3,7 @@ import { useCollection } from "../../hooks/useCollection"
 
 // styles
 import styles from './Home.module.css'
+import TransactionList from "./TransactionList"
 
 // components
 import TransctionForm from './TransctionForm'
@@ -15,7 +16,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        transaction list
+        {documents && <TransactionList transactions={documents} />}
       </div>
       <div className={styles.sidebar}>
         <TransctionForm uid={user.uid}/>
