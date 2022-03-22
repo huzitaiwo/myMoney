@@ -8,12 +8,25 @@ export const useCollection = collecction => {
   useEffect(() => {
     let ref = projectFirestore.collection(collecction)
 
-    ref.onSnapshot(snapshot => {
+    const unsubscribe = ref.onSnapshot(snapshot => {
       let results = []
       snapshot.docs.forEach(doc => {
         results.push({ ...doc.data(), id: doc.id })
       })
+
+      // update states
+      setDocuments(results)
+      setError(null)
+    }, err => {
+      console.log(err)
+      setError('could not fecth the data')
     })
-  }, [])
+
+    // unsubscribe on unmount
+    return () => unsubscribe()
+
+  }, [documents])
+
+  return { documents, error }
   
 }
