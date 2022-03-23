@@ -17,8 +17,8 @@ export const useCollection = collecction => {
       // update states
       setDocuments(results)
       setError(null)
-    }, err => {
-      console.log(err)
+    }, error => {
+      console.log(error)
       setError('could not fecth the data')
     })
 
