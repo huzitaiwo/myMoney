@@ -62,7 +62,7 @@ export const useFirestore = collection => {
       dispatchIfNotUnMounted({ type: "DELETE_DOCUMENT", payload: deleteDocument })
     }
     catch (err) {
-
+      dispatchIfNotUnMounted({ type: 'ERROR', payload: 'could not delete' })
     }
   }
 
