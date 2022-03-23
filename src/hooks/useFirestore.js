@@ -14,6 +14,8 @@ const firestoreReducer = (state, action) => {
       return { isLoading: true, document: null, error: null, success: null }
     case 'ADD_DOCUMENT':
       return { isLoading: false, document: action.payload, error: null, success: true }
+    case 'DELETE_DOCUMENT':
+      return { isLoading: false, document: null, error: null, success: true }
     case 'ERROR':
       return { isLoading: false, document: null, error: action.payload, success: false }
     default:
@@ -53,7 +55,15 @@ export const useFirestore = collection => {
 
   // delete document
   const deleteDocument = async (id) => {
+    dispatch({ type: 'IS_LOADING' })
 
+    try {
+      await ref.doc(id).delete()
+      dispatchIfNotUnMounted({ type: "DELETE_DOCUMENT", payload: deleteDocument })
+    }
+    catch (err) {
+
+    }
   }
 
   useEffect(() => {
