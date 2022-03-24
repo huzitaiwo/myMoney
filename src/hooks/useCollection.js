@@ -29,8 +29,7 @@ export const useCollection = (collection, _query, _orderBy) => {
       // update states
       setDocuments(results)
       setError(null)
-    }, error => {
-      console.log(error)
+    }, (error) => {
       setError('could not fecth the data')
     })
 
