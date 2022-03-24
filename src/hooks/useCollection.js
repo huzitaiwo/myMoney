@@ -33,6 +33,7 @@ export const useCollection = (collection, _query, _orderBy) => {
       setDocuments(results)
       setError(null)
     }, (error) => {
+      setIsLoading(false)
       setError('could not fecth the data')
     })
 
@@ -41,6 +42,6 @@ export const useCollection = (collection, _query, _orderBy) => {
 
   }, [collection, query, orderBy])
 
-  return { documents, error }
+  return { documents, error, isLoading }
   
 }
