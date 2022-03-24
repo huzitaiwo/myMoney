@@ -4,6 +4,7 @@ import { projectFirestore } from '../firebase/config'
 export const useCollection = (collection, _query, _orderBy) => {
   const [documents, setDocuments] = useState(null)
   const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
    // if we don't use a ref --> infinite loop in useEffect
    // _query, oderBy is an array and is "different" on every function call
