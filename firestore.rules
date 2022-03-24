@@ -2,11 +2,11 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /transactions/{document=**} {
-      
+
       // only authenticated user
       allow create: if request.auth != null;
 
-      //
+      //logged in user uid must match the document creator to read & delete
       allow read, delete: if request.auth.id == resource.data.uid;
     }
   }
