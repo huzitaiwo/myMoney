@@ -12,6 +12,7 @@ export const useCollection = (collection, _query, _orderBy) => {
   const orderBy = useRef(_orderBy).current
 
   useEffect(() => {
+    setIsLoading(true)
     let ref = projectFirestore.collection(collection)
 
     if (query) {
@@ -28,6 +29,7 @@ export const useCollection = (collection, _query, _orderBy) => {
       })
 
       // update states
+      setIsLoading(false)
       setDocuments(results)
       setError(null)
     }, (error) => {
