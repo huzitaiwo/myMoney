@@ -33,7 +33,7 @@ export default function TransctionForm({ uid }) {
           />
         </label>
         <label>
-          <span>Transation amount:</span>
+          <span>Transation amount: ($)</span>
           <input 
             type="number"
             required
