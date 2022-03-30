@@ -3,12 +3,7 @@
   grid-template-columns: 2fr 1fr;
   max-width: 960px;
   margin: 60px auto;
-}
-.content {
-  padding-right: 30px;
-}
-.sidebar {
-  padding-left: 30px;
+  gap: 30px;
 }
 .sidebar form {
   padding: 20px;
@@ -90,4 +85,20 @@
   line-height: 0;
   font-size: 0.9em;
   cursor: pointer;
+}
+
+@media (max-width: 960px) {
+  .container {
+    padding: 0 30px;
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    padding: 0 15px;
+    grid-template-columns: 1fr;
+  }
+  .content {
+    order: 1;
+  }
 }
